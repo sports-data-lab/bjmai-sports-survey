@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BJMAI 中国体育社会调查问卷</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial;background:#0f172a;color:#e5e7eb;padding:20px}
+.container{max-width:720px;margin:auto}
+.card{background:#111827;padding:24px;border-radius:16px}
+.option{border:1px solid #334155;padding:12px;border-radius:10px;margin:8px 0;cursor:pointer}
+.option.active{background:#22d3ee;color:#000}
+button{margin-top:16px;padding:10px 16px;border:none;border-radius:10px;background:#38bdf8}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>BJMAI｜中国体育与社会发展问卷</h2>
+<div id="q"></div>
+<div id="opts"></div>
+<button onclick="next()">下一题</button>
+</div>
+
+<script>
+const qs=[
+"我认为体育对社会公平具有重要意义",
+"中国中小学体育课时总体不足",
+"城乡体育资源分配不均",
+"退役运动员保障体系仍需完善"
+];
+let i=0,ans=[];
+function render(){
+document.getElementById("q").innerText=qs[i];
+const o=document.getElementById("opts");o.innerHTML="";
+for(let s=1;s<=5;s++){
+let d=document.createElement("div");
+d.className="option"+(ans[i]==s?" active":"");
+d.innerText=s+" 分";
+d.onclick=()=>{ans[i]=s;render()};
+o.appendChild(d);
+}}
+function next(){
+if(i<qs.length-1){i++;render()}
+else alert("完成："+JSON.stringify(ans));
+}
+render();
+</script>
+
+</body>
+</html>
