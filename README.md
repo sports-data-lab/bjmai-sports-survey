@@ -1,1 +1,0 @@
-# bjmai-sports-survey
